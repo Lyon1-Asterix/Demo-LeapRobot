@@ -18,18 +18,14 @@ void setup() {
   moteur[2] = 10;
   moteur[3] = 11;
 
-  for (int i = 0; i < 4; i++)  {
-    pinMode (moteur[i], OUTPUT);
-  }
-
   for (int i = 0; i < 8; i++) {
     pinMode (diode[i], OUTPUT);
+    pinMode (moteur[i%4], OUTPUT);
+    // RAZ des moteurs
+    analogWrite (moteur[i%4], 0);
+    // RAZ des diodes
+    digitalWrite (diode[i], LOW);
   }
-
-  analogWrite (moteur[0], 0);
-  analogWrite (moteur[1], 0);
-  analogWrite (moteur[2], 0);
-  analogWrite (moteur[3], 0);
 }
 
 void loop() {
@@ -37,6 +33,7 @@ void loop() {
     c = Serial.read();
 
     switch (c) {
+      // DIODES
       case 0 : // On éteint tout
         for (int i = 0; i < 10; i++) {
           digitalWrite (diode[i], LOW);
@@ -50,6 +47,7 @@ void loop() {
           delay (10);
         }
         break;
+      // MOTEURS
       case 2: // Droite
         analogWrite (moteur[0], 200);
         analogWrite (moteur[1], 0);
