@@ -75,11 +75,18 @@ void draw(){
       if (handCenter.getZ() < -90) { // Haut
         port.write(4);
       }
+      
+      if (handCenter.getZ() > 90) { // Bas
+        port.write(5);
+      }
     }
    // motor ();
     
     FingerList fingers = leap.frame().fingers().extended(); //finger list to get the fingers count
     int count = fingers.count(); // integer holds the count of fingers
+    if ( count == 0 ) {
+       port.write(6); 
+    }
     background(0);  // box background color
     fill(255); // text color
     textSize(height/2); // text size
