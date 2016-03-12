@@ -32,13 +32,14 @@ void draw(){
          case TYPE_SWIPE:
            println("swipe");
            SwipeGesture swipe = new SwipeGesture(gesture);
-           CircleGesture circle = new CircleGesture (gesture);
+           Vector swipeDirection = swipe.direction();
+           println(swipeDirection.toString());
+           println("");
            // Signal d'allumage
-           if (circle.pointable().direction().angleTo(circle.normal()) <= Math.PI/4) {
-             port.write(1); 
-           } else {
-             port.write(0); 
-           }
+           if (swipeDirection.getX() > 0)
+             port.write(0);
+           else
+             port.write(1);
            break;
          case TYPE_KEY_TAP:
            println("key tap");

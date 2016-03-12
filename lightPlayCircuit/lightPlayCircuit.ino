@@ -18,14 +18,14 @@ void loop() {
       case 0 :
         for (int i = 0; i < 10; i++) {
           digitalWrite (pin[i], LOW);
-          delay (50);
+          delay (10);
         }
       break;
 
       case 1:
         for (int i = 0; i < 10; i++) {
           digitalWrite (pin[i], HIGH);
-          delay (50);
+          delay (10);
         }
       break;
 
