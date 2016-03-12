@@ -33,8 +33,8 @@ void draw(){
            println("swipe");
            SwipeGesture swipe = new SwipeGesture(gesture);
            Vector swipeDirection = swipe.direction();
-           println(swipeDirection.toString());
-           println("");
+           //println(swipeDirection.toString());
+           //println("");
            // Signal d'allumage
            if (swipeDirection.getX() > 0)
              port.write(0);
@@ -53,6 +53,30 @@ void draw(){
        }
       }
     }
+    
+    HandList hands = leap.frame().hands();
+    Hand firstHand = hands.get(0);
+    if (firstHand.isValid()) {  
+      // On récupère le centre de la main
+      Vector handCenter = firstHand.palmPosition();
+      
+      println ("X : " + handCenter.getX());
+      println("Z : " + handCenter.getZ());
+      println("");
+      
+      if (handCenter.getX() > 90) { // Droite
+        port.write(2);
+      }
+      
+      if (handCenter.getX() < -90) { // Gauche
+        port.write(3);
+      }
+      
+      if (handCenter.getZ() < -90) { // Haut
+        port.write(4);
+      }
+    }
+   // motor ();
     
     FingerList fingers = leap.frame().fingers().extended(); //finger list to get the fingers count
     int count = fingers.count(); // integer holds the count of fingers
