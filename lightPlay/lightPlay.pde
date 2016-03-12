@@ -14,11 +14,8 @@ void setup(){
   leap.enableGesture(Gesture.Type.TYPE_KEY_TAP);
   leap.enableGesture(Gesture.Type.TYPE_SCREEN_TAP);
   leap.enableGesture(Gesture.Type.TYPE_SWIPE);
-  
-  for (int i = 0; i < Serial.list().length; i++)
-    println(Serial.list()[i]);
     
-  //port = new Serial(this, Serial.list()[2], 115200);//initialize the port
+  port = new Serial(this, Serial.list()[0], 115200);//initialize the port
 } 
 
 void draw(){
@@ -30,9 +27,18 @@ void draw(){
        switch (gesture.type()) {
          case TYPE_CIRCLE:
            println ("circle");
+           //port.write(0); // Signal d'extinction
            break;
          case TYPE_SWIPE:
            println("swipe");
+           SwipeGesture swipe = new SwipeGesture(gesture);
+           CircleGesture circle = new CircleGesture (gesture);
+           // Signal d'allumage
+           if (circle.pointable().direction().angleTo(circle.normal()) <= Math.PI/4) {
+             port.write(1); 
+           } else {
+             port.write(0); 
+           }
            break;
          case TYPE_KEY_TAP:
            println("key tap");
@@ -44,16 +50,6 @@ void draw(){
            println("invalid");
            break;
        }
-       
-       //if (gesture.type() == Gesture.Type.TYPE_CIRCLE) {
-         
-       //     CircleGesture circle = new CircleGesture (gesture);
-       //     if (circle.pointable().direction().angleTo(circle.normal()) <= Math.PI/4) {
-       //       port.write(1); 
-       //     } else {
-       //       port.write(2); 
-       //     }
-       //}
       }
     }
     
