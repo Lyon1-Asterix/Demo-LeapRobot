@@ -20,7 +20,7 @@ import processing.serial.*; //serial communication library
 Controller leap; //define a controller
 Serial port; //define a port
 
-boolean debug = true;
+boolean debug = false;
 
 void setup() {
   size(250, 250); //sketch size
@@ -46,13 +46,17 @@ void draw() {
         Vector swipeDirection = swipe.direction();
         // Signal d'allumage
         if (swipeDirection.getX() < 0) {
-          if (!debug)
+          if (!debug) {
             port.write(1);
+            //println("swipe : " + swipeDirection.toString());
+          }
           else
             println("swipe : " + swipeDirection.toString());
         } else if (swipeDirection.getX() > 0) { 
-          if (!debug)
+          if (!debug) {
             port.write(0);
+            //println("swipe : " + swipeDirection.toString());
+          }
           else
             println("swipe : " + swipeDirection.toString());
         }
@@ -69,6 +73,7 @@ void draw() {
     Vector handCenter = firstHand.palmPosition();
 
     if (!debug) {
+      println ("X : " + handCenter.getX() + " Z : " + handCenter.getZ());
       if (handCenter.getX() > 90) { // Droite
         port.write(2);
       }

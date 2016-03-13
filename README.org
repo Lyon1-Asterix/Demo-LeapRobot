@@ -11,17 +11,19 @@
 #+EXCLUDE_TAGS: noexport
 #+CREATOR: Emacs 24.5.1 (Org mode 8.3.4)
 
+[[file:./resources/fhack.png]]
+
 * Your-Robot
 Robot piloté par un Leap Motion et pilotable aussi à l'aide d'un module Bluetooth
 à travers une application Android (Ardudroid) installée sur votre smartphone.
 
-* Prérequis (minimum[fn:1])
+* Prérequis
 + Arduino Uno
++ Leap Motion
++ Module Bluetooth HC-06
 + 2 moteurs DC
 + 8 diodes LED
 + Circuit intégré L298 ou L293
-
-[fn:1] Sans Bluetooth
 
 * Circuit
 
@@ -32,14 +34,17 @@ Robot piloté par un Leap Motion et pilotable aussi à l'aide d'un module Blueto
 + Ouvrer dans [[https://www.arduino.cc/en/Main/Software][Arduino IDE]] le code se trouvant dans le dossier Arduino.
   + Connecter l'Arduino à votre ordinateur et téléverser le code.
 + Ouvrer dans [[https://processing.org/download/][Processing]] le code se trouvant dans le dossier Processing.
+  + Brancher le Leap Motion [fn:1]
   + Exécuter le code.
+
+[fn:1] Sous Linux il faut lancer la commande src_sh[:exports code]{sudo leapd}
 
 * Troubleshooting
 + Sous Linux, vous aurez peut-être un problème du type :
  #+BEGIN_EXAMPLE
  Arduino IDE error - avrdude: ser_open(): can't open device "/dev/ttyACM0": Permission denied 
  #+END_EXAMPLE
-  + Pour régler ce problème, entrer cette commande:
-#+BEGIN_SRC sh
-sudo chmod a+rw /dev/ttyACM0
-#+END_SRC
+  + Pour régler ce problème, entrer cette commande: 
+    #+BEGIN_SRC sh
+    sudo chmod a+rw /dev/ttyACM0
+    #+END_SRC

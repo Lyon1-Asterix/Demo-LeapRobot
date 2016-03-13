@@ -34,12 +34,14 @@ void setup() {
 
   for (int i = 0; i < 8; i++) {
     pinMode (diode[i], OUTPUT);
-    pinMode (moteur[i%4], OUTPUT);
+    pinMode (moteur[i % 4], OUTPUT);
     // RAZ des moteurs
-    analogWrite (moteur[i%4], 0);
+    analogWrite (moteur[i % 4], 0);
     // RAZ des diodes
     digitalWrite (diode[i], LOW);
   }
+
+  setup_bluetooth();
 }
 
 void loop() {
@@ -102,4 +104,6 @@ void loop() {
         //motor ();
     }
   }
+
+  loop_bluetooth();
 }
