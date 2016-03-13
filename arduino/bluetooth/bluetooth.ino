@@ -111,17 +111,16 @@ void loop()
 void set_digitalwrite(int pin_num, int pin_value)
 {
   switch (pin_num) {
-    case 13:
+    case 13: // Droite
       pinMode(13, OUTPUT);
       digitalWrite(13, pin_value);
+      
       analogWrite(mtd1, 200);
       analogWrite(mtd2, 0);
       analogWrite(mtg1, 0);
       analogWrite(mtg2, 0);
-
-      // add your code here
       break;
-    case 12:
+    case 12: // Haut
       pinMode(12, OUTPUT);
       digitalWrite(12, pin_value);
 
@@ -129,16 +128,13 @@ void set_digitalwrite(int pin_num, int pin_value)
       analogWrite(mtd2, 0);
       analogWrite(mtg1, 140);
       analogWrite(mtg2, 0);
-
-
-      // add your code here
       break;
     case 11:
       pinMode(11, OUTPUT);
       digitalWrite(11, pin_value);
       // add your code here
       break;
-    case 10:
+    case 10: // Gauche
       pinMode(10, OUTPUT);
       digitalWrite(10, pin_value);
 
@@ -146,14 +142,13 @@ void set_digitalwrite(int pin_num, int pin_value)
       analogWrite(mtd2, 0);
       analogWrite(mtg1, 140);
       analogWrite(mtg2, 0);
-      // add your code here
       break;
     case 9:
       pinMode(9, OUTPUT);
       digitalWrite(9, pin_value);
       // add your code here
       break;
-    case 8:
+    case 8: // Stop
       pinMode(8, OUTPUT);
       digitalWrite(8, pin_value);
 
@@ -164,7 +159,7 @@ void set_digitalwrite(int pin_num, int pin_value)
 
       // add your code here
       break;
-    case 7:
+    case 7: // Bas
       pinMode(7, OUTPUT);
       digitalWrite(7, pin_value);
 

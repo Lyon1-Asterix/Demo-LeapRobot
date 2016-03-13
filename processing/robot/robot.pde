@@ -35,70 +35,64 @@ void setup() {
 void draw() {
   if (leap.isConnected()) {
     GestureList gestures = leap.frame().gestures();
+    Hand firstHand = leap.frame().hands().get(0);
+    FingerList fingers = leap.frame().fingers().extended(); //finger list to get the fingers count
+    int count = fingers.count(); // integer holds the count of fingers
+
     for (int i = 0; i < gestures.count(); i++) {
       Gesture gesture = gestures.get(i);
 
       ////////////////////////
       // Gestion des diodes //
       ////////////////////////  
-      if (gesture.type().equals(Gesture.Type.TYPE_SWIPE)) {
+      if (gesture.type().equals(Gesture.Type.TYPE_SWIPE) && count == 1) {
         SwipeGesture swipe = new SwipeGesture(gesture);
         Vector swipeDirection = swipe.direction();
         // Signal d'allumage
         if (swipeDirection.getX() < 0) {
           if (!debug) {
             port.write(1);
-            //println("swipe : " + swipeDirection.toString());
-          }
-          else
+            println("swipe : " + swipeDirection.toString());
+          } else
             println("swipe : " + swipeDirection.toString());
         } else if (swipeDirection.getX() > 0) { 
           if (!debug) {
             port.write(0);
-            //println("swipe : " + swipeDirection.toString());
-          }
-          else
+            println("swipe : " + swipeDirection.toString());
+          } else
             println("swipe : " + swipeDirection.toString());
         }
       }
     }
-  }
+    /////////////////////////
+    // Gestion des moteurs //
+    /////////////////////////
+    if (firstHand.isValid() && fingers.count() == 5 && !debug) {
+      // On récupère les coordonées du centre de la main
+      Vector handCenter = firstHand.palmPosition();
 
-  /////////////////////////
-  // Gestion des moteurs //
-  /////////////////////////
-  Hand firstHand = leap.frame().hands().get(0);
-  if (firstHand.isValid()) {  
-    // On récupère les coordonées du centre de la main
-    Vector handCenter = firstHand.palmPosition();
-
-    if (!debug) {
-      println ("X : " + handCenter.getX() + " Z : " + handCenter.getZ());
-      if (handCenter.getX() > 90) { // Droite
-        port.write(2);
+      if (!debug) {
+        println ("X : " + handCenter.getX() + " Z : " + handCenter.getZ());
+        if (handCenter.getX() > 90) { // Droite
+          port.write(2);
+        } else if (handCenter.getX() < -90) { // Gauche
+          port.write(3);
+        } else if (handCenter.getZ() < -90) { // Haut
+          port.write(4);
+        } else if (handCenter.getZ() > 90) { // Bas
+          port.write(5);
+        } else {
+          port.write(6); // Arrêt
+        }
       }
-
-      if (handCenter.getX() < -90) { // Gauche
-        port.write(3);
-      }
-
-      if (handCenter.getZ() < -90) { // Haut
-        port.write(4);
-      }
-
-      if (handCenter.getZ() > 90) { // Bas
-        port.write(5);
-      }
+    } else {
+      println("Arrêt");
+      port.write(6);
     }
-  }
 
-  FingerList fingers = leap.frame().fingers().extended(); //finger list to get the fingers count
-  int count = fingers.count(); // integer holds the count of fingers
-  if ( count == 0 && !debug ) {
-    port.write(6);
+    background(0);  // box background color
+    fill(255); // text color
+    textSize(height/2); // text size
+    text(count, 90, 160); // text value and position on the box
   }
-  background(0);  // box background color
-  fill(255); // text color
-  textSize(height/2); // text size
-  text(count, 90, 160); // text value and position on the box
 }

@@ -19,10 +19,12 @@ int c = -1;
 void setup() {
   Serial.begin(115200); //set serial with baud rate
   // initialisation des diodes
-  for (int i = 0; i < 6; i++) {
-    diode[i] = 2 + i;
-  }
-
+  diode[0] = 2;
+  diode[1] = 3;
+  diode[2] = 4;
+  diode[3] = 7;
+  diode[4] = 8;
+  diode[5] = 9;
   diode[6] = 12;
   diode[7] = 13;
 
@@ -34,14 +36,15 @@ void setup() {
 
   for (int i = 0; i < 8; i++) {
     pinMode (diode[i], OUTPUT);
-    pinMode (moteur[i % 4], OUTPUT);
-    // RAZ des moteurs
-    analogWrite (moteur[i % 4], 0);
     // RAZ des diodes
     digitalWrite (diode[i], LOW);
   }
 
-  setup_bluetooth();
+  for (int i = 0; i < 4; i++) {
+    pinMode (moteur[i], OUTPUT);
+    // RAZ des moteurs
+    analogWrite (moteur[i], 0);
+  }
 }
 
 void loop() {
@@ -51,16 +54,16 @@ void loop() {
     switch (c) {
       // DIODES
       case 0 : // On éteint tout
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 8; i++) {
           digitalWrite (diode[i], LOW);
-          delay (10);
+          delay (50);
         }
         break;
 
       case 1: // On allume tout
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 8; i++) {
           digitalWrite (diode[i], HIGH);
-          delay (10);
+          delay (50);
         }
         break;
       // MOTEURS
@@ -100,10 +103,6 @@ void loop() {
         break;
 
       default: break;
-
-        //motor ();
     }
   }
-
-  loop_bluetooth();
 }
