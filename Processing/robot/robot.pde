@@ -1,3 +1,17 @@
+/* Copyright 2016 Ghayth Bouagila & Hedi Nasr */
+
+/* Licensed under the Apache License, Version 2.0 (the "License"); */
+/* you may not use this file except in compliance with the License. */
+/* You may obtain a copy of the License at */
+
+/*     http://www.apache.org/licenses/LICENSE-2.0 */
+
+/* Unless required by applicable law or agreed to in writing, software */
+/* distributed under the License is distributed on an "AS IS" BASIS, */
+/* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. */
+/* See the License for the specific language governing permissions and */
+/* limitations under the License. */
+
 import com.leapmotion.leap.*; //leap motion library
 import processing.serial.*; //serial communication library
 /**
@@ -11,10 +25,7 @@ boolean debug = true;
 void setup() {
   size(250, 250); //sketch size
   leap = new Controller(); // initialize the controller
-  // Activation des gestes (fingers)
-  leap.enableGesture(Gesture.Type.TYPE_CIRCLE);
-  leap.enableGesture(Gesture.Type.TYPE_KEY_TAP);
-  leap.enableGesture(Gesture.Type.TYPE_SCREEN_TAP);
+  // Activation des gestes (swipe)
   leap.enableGesture(Gesture.Type.TYPE_SWIPE);
 
   if (!debug)
@@ -29,13 +40,8 @@ void draw() {
 
       ////////////////////////
       // Gestion des diodes //
-      ////////////////////////
-      switch (gesture.type()) {
-      case TYPE_CIRCLE:
-        //println ("circle");
-        //port.write(0); // Signal d'extinction
-        break;
-      case TYPE_SWIPE:
+      ////////////////////////  
+      if (gesture.type().equals(Gesture.Type.TYPE_SWIPE)) {
         SwipeGesture swipe = new SwipeGesture(gesture);
         Vector swipeDirection = swipe.direction();
         // Signal d'allumage
@@ -49,17 +55,7 @@ void draw() {
             port.write(0);
           else
             println("swipe : " + swipeDirection.toString());
-        }          
-        break;
-      case TYPE_KEY_TAP:
-        println("key tap");
-        break;
-      case TYPE_SCREEN_TAP:
-        println("screen tap");
-        break;
-      case TYPE_INVALID:
-        println("invalid");
-        break;
+        }
       }
     }
   }
@@ -67,10 +63,9 @@ void draw() {
   /////////////////////////
   // Gestion des moteurs //
   /////////////////////////
-  HandList hands = leap.frame().hands();
-  Hand firstHand = hands.get(0);
+  Hand firstHand = leap.frame().hands().get(0);
   if (firstHand.isValid()) {  
-    // On récupère le centre de la main
+    // On récupère les coordonées du centre de la main
     Vector handCenter = firstHand.palmPosition();
 
     if (!debug) {
