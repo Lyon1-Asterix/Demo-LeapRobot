@@ -11,7 +11,7 @@
 </div>
 </div>
 
-![img](./resources/fhack.png)
+![img](./resources/fhack.jpg)
 
 # Your-Robot<a id="orgheadline1"></a>
 
