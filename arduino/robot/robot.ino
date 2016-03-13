@@ -61,7 +61,7 @@ void loop() {
           semaphore = true;
           for (int i = 0; i < 8; i++) {
             digitalWrite (diode[i], LOW);
-            //delay (50);
+            //delay (10);
           }
         }
         semaphore = false;
@@ -74,7 +74,7 @@ void loop() {
           semaphore = true;
           for (int i = 0; i < 8; i++) {
             digitalWrite (diode[i], HIGH);
-            //delay (50);
+            //delay (10);
           }
         }
         semaphore = false;
