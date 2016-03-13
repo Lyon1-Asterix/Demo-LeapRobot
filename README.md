@@ -4,8 +4,9 @@
 <ul>
 <li><a href="#orgheadline1">1. Your-Robot</a></li>
 <li><a href="#orgheadline2">2. Prérequis (minimum)</a></li>
-<li><a href="#orgheadline3">3. How it works ?</a></li>
-<li><a href="#orgheadline4">4. Troubleshooting</a></li>
+<li><a href="#orgheadline3">3. Circuit</a></li>
+<li><a href="#orgheadline4">4. How it works ?</a></li>
+<li><a href="#orgheadline5">5. Troubleshooting</a></li>
 </ul>
 </div>
 </div>
@@ -23,21 +24,25 @@ Robot piloté par un Leap Motion et pilotable aussi à l'aide d'un module Blueto
 -   8 diodes LED
 -   Circuit intégré L298 ou L293
 
-# How it works ?<a id="orgheadline3"></a>
+# Circuit<a id="orgheadline3"></a>
+
+![img](./resources/circuit.jpg)
+
+# How it works ?<a id="orgheadline4"></a>
 
 -   Télécharger et installer [Processing](https://processing.org/download/) et [Arduino IDE](https://www.arduino.cc/en/Main/Software).
 -   Ouvrer dans [Arduino IDE](https://www.arduino.cc/en/Main/Software) le code se trouvant dans le dossier Arduino.
--   Connecter l'Arduino à votre ordinateur et téléverser le code.
-    -   Ouvrer dans [Processing](https://processing.org/download/) le code se trouvant dans le dossier Processing.
--   Exécuter le code.
+    -   Connecter l'Arduino à votre ordinateur et téléverser le code.
+-   Ouvrer dans [Processing](https://processing.org/download/) le code se trouvant dans le dossier Processing.
+    -   Exécuter le code.
 
-# Troubleshooting<a id="orgheadline4"></a>
+# Troubleshooting<a id="orgheadline5"></a>
 
 -   Sous Linux, vous aurez peut-être un problème du type :
     
         Arduino IDE error - avrdude: ser_open(): can't open device "/dev/ttyACM0": Permission denied
-
-Pour régler ce problème, entrer cette commande:
+    
+    -   Pour régler ce problème, entrer cette commande:
 
     sudo chmod a+rw /dev/ttyACM0
 

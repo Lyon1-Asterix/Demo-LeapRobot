@@ -23,19 +23,23 @@ Robot piloté par un Leap Motion et pilotable aussi à l'aide d'un module Blueto
 
 [fn:1] Sans Bluetooth
 
+* Circuit
+
+[[file:./resources/circuit.jpg]]
+
 * How it works ?
 + Télécharger et installer [[https://processing.org/download/][Processing]] et [[https://www.arduino.cc/en/Main/Software][Arduino IDE]].
 + Ouvrer dans [[https://www.arduino.cc/en/Main/Software][Arduino IDE]] le code se trouvant dans le dossier Arduino.
-+ Connecter l'Arduino à votre ordinateur et téléverser le code.
-  + Ouvrer dans [[https://processing.org/download/][Processing]] le code se trouvant dans le dossier Processing.
-+ Exécuter le code.
+  + Connecter l'Arduino à votre ordinateur et téléverser le code.
++ Ouvrer dans [[https://processing.org/download/][Processing]] le code se trouvant dans le dossier Processing.
+  + Exécuter le code.
 
 * Troubleshooting
 + Sous Linux, vous aurez peut-être un problème du type :
  #+BEGIN_EXAMPLE
  Arduino IDE error - avrdude: ser_open(): can't open device "/dev/ttyACM0": Permission denied 
  #+END_EXAMPLE
-Pour régler ce problème, entrer cette commande:
+  + Pour régler ce problème, entrer cette commande:
 #+BEGIN_SRC sh
 sudo chmod a+rw /dev/ttyACM0
 #+END_SRC
