@@ -114,7 +114,7 @@ void set_digitalwrite(int pin_num, int pin_value)
     case 13: // Droite
       pinMode(13, OUTPUT);
       digitalWrite(13, pin_value);
-      
+      Serial.println("Droite");
       analogWrite(mtd1, 200);
       analogWrite(mtd2, 0);
       analogWrite(mtg1, 0);
@@ -123,7 +123,7 @@ void set_digitalwrite(int pin_num, int pin_value)
     case 12: // Haut
       pinMode(12, OUTPUT);
       digitalWrite(12, pin_value);
-
+      Serial.println("Haut");
       analogWrite(mtd1, 200);
       analogWrite(mtd2, 0);
       analogWrite(mtg1, 140);
@@ -137,7 +137,7 @@ void set_digitalwrite(int pin_num, int pin_value)
     case 10: // Gauche
       pinMode(10, OUTPUT);
       digitalWrite(10, pin_value);
-
+      Serial.println("Gauche");
       analogWrite(mtd1, 0);
       analogWrite(mtd2, 0);
       analogWrite(mtg1, 140);
@@ -151,7 +151,7 @@ void set_digitalwrite(int pin_num, int pin_value)
     case 8: // Stop
       pinMode(8, OUTPUT);
       digitalWrite(8, pin_value);
-
+      Serial.println("Stop");
       analogWrite(mtd1, 0);
       analogWrite(mtd2, 0);
       analogWrite(mtg1, 0);
@@ -162,7 +162,7 @@ void set_digitalwrite(int pin_num, int pin_value)
     case 7: // Bas
       pinMode(7, OUTPUT);
       digitalWrite(7, pin_value);
-
+      Serial.println("Bas");
       analogWrite(mtd1, 0);
       analogWrite(mtd2, 200);
       analogWrite(mtg1, 0);

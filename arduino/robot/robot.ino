@@ -68,7 +68,7 @@ void loop() {
         break;
       // MOTEURS
       case 2: // Droite
-        analogWrite (moteur[0], 200);
+        analogWrite (moteur[0], 250);
         analogWrite (moteur[1], 0);
         analogWrite (moteur[2], 0);
         analogWrite (moteur[3], 0);
@@ -77,22 +77,22 @@ void loop() {
       case 3: // Gauche
         analogWrite (moteur[0], 0);
         analogWrite (moteur[1], 0);
-        analogWrite (moteur[2], 140);
+        analogWrite (moteur[2], 200);
         analogWrite (moteur[3], 0);
         break;
 
       case 4: // Haut
-        analogWrite (moteur[0], 200);
+        analogWrite (moteur[0], 250);
         analogWrite (moteur[1], 0);
-        analogWrite (moteur[2], 140);
+        analogWrite (moteur[2], 200);
         analogWrite (moteur[3], 0);
         break;
 
       case 5: // Bas
         analogWrite (moteur[0], 0);
-        analogWrite (moteur[1], 200);
+        analogWrite (moteur[1], 250);
         analogWrite (moteur[2], 0);
-        analogWrite (moteur[3], 140);
+        analogWrite (moteur[3], 200);
         break;
 
       case 6: // Arrêt
