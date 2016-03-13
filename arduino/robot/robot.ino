@@ -15,6 +15,7 @@
 int diode[8]; // pins pour les diodes
 int moteur[4]; // pins pour les moteurs
 int c = -1;
+bool semaphore = false;
 
 void setup() {
   Serial.begin(115200); //set serial with baud rate
@@ -45,6 +46,8 @@ void setup() {
     // RAZ des moteurs
     analogWrite (moteur[i], 0);
   }
+
+  semaphore = false;
 }
 
 void loop() {
@@ -54,52 +57,90 @@ void loop() {
     switch (c) {
       // DIODES
       case 0 : // On éteint tout
-        for (int i = 0; i < 8; i++) {
-          digitalWrite (diode[i], LOW);
-          delay (50);
+        if (!semaphore) {
+          semaphore = true;
+          for (int i = 0; i < 8; i++) {
+            digitalWrite (diode[i], LOW);
+            //delay (50);
+          }
         }
+        semaphore = false;
+
         break;
 
       case 1: // On allume tout
-        for (int i = 0; i < 8; i++) {
-          digitalWrite (diode[i], HIGH);
-          delay (50);
+
+        if (!semaphore) {
+          semaphore = true;
+          for (int i = 0; i < 8; i++) {
+            digitalWrite (diode[i], HIGH);
+            //delay (50);
+          }
         }
+        semaphore = false;
+
         break;
       // MOTEURS
       case 2: // Droite
-        analogWrite (moteur[0], 250);
-        analogWrite (moteur[1], 0);
-        analogWrite (moteur[2], 0);
-        analogWrite (moteur[3], 0);
+
+        if (!semaphore) {
+          semaphore = true;
+          analogWrite (moteur[0], 250);
+          analogWrite (moteur[1], 0);
+          analogWrite (moteur[2], 0);
+          analogWrite (moteur[3], 0);
+        }
+        semaphore = false;
+
         break;
 
       case 3: // Gauche
-        analogWrite (moteur[0], 0);
-        analogWrite (moteur[1], 0);
-        analogWrite (moteur[2], 200);
-        analogWrite (moteur[3], 0);
+        if (!semaphore) {
+          semaphore = true;
+          analogWrite (moteur[0], 0);
+          analogWrite (moteur[1], 0);
+          analogWrite (moteur[2], 200);
+          analogWrite (moteur[3], 0);
+        }
+        semaphore = false;
+
         break;
 
       case 4: // Haut
-        analogWrite (moteur[0], 250);
-        analogWrite (moteur[1], 0);
-        analogWrite (moteur[2], 200);
-        analogWrite (moteur[3], 0);
+
+        if (!semaphore) {
+          semaphore = true;
+          analogWrite (moteur[0], 250);
+          analogWrite (moteur[1], 0);
+          analogWrite (moteur[2], 200);
+          analogWrite (moteur[3], 0);
+        }
+        semaphore = false;
+
         break;
 
       case 5: // Bas
-        analogWrite (moteur[0], 0);
-        analogWrite (moteur[1], 250);
-        analogWrite (moteur[2], 0);
-        analogWrite (moteur[3], 200);
+        if (!semaphore) {
+          semaphore = true;
+          analogWrite (moteur[0], 0);
+          analogWrite (moteur[1], 250);
+          analogWrite (moteur[2], 0);
+          analogWrite (moteur[3], 200);
+        }
+        semaphore = false;
+
         break;
 
       case 6: // Arrêt
-        analogWrite (moteur[0], 0);
-        analogWrite (moteur[1], 0);
-        analogWrite (moteur[2], 0);
-        analogWrite (moteur[3], 0);
+        if (!semaphore) {
+          semaphore = true;
+          analogWrite (moteur[0], 0);
+          analogWrite (moteur[1], 0);
+          analogWrite (moteur[2], 0);
+          analogWrite (moteur[3], 0);
+        }
+        semaphore = false;
+
         break;
 
       default: break;

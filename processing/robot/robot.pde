@@ -34,42 +34,18 @@ void setup() {
 
 void draw() {
   if (leap.isConnected()) {
-    GestureList gestures = leap.frame().gestures();
+    //GestureList gestures = leap.frame().gestures();
     Hand firstHand = leap.frame().hands().get(0);
     FingerList fingers = leap.frame().fingers().extended(); //finger list to get the fingers count
     int count = fingers.count(); // integer holds the count of fingers
 
-    for (int i = 0; i < gestures.count(); i++) {
-      Gesture gesture = gestures.get(i);
-
-      ////////////////////////
-      // Gestion des diodes //
-      ////////////////////////  
-      if (gesture.type().equals(Gesture.Type.TYPE_SWIPE) && count == 1) {
-        SwipeGesture swipe = new SwipeGesture(gesture);
-        Vector swipeDirection = swipe.direction();
-        // Signal d'allumage
-        if (swipeDirection.getX() < 0) {
-          if (!debug) {
-            port.write(1);
-            println("swipe : " + swipeDirection.toString());
-          } else
-            println("swipe : " + swipeDirection.toString());
-        } else if (swipeDirection.getX() > 0) { 
-          if (!debug) {
-            port.write(0);
-            println("swipe : " + swipeDirection.toString());
-          } else
-            println("swipe : " + swipeDirection.toString());
-        }
-      }
-    }
-    /////////////////////////
-    // Gestion des moteurs //
-    /////////////////////////
+    ///////////////////////////////////////
+    // Gestion des diodes et des moteurs //
+    ///////////////////////////////////////
     if (firstHand.isValid() && fingers.count() == 5 && !debug) {
       // On récupère les coordonées du centre de la main
       Vector handCenter = firstHand.palmPosition();
+      port.write(1);
 
       if (!debug) {
         println ("X : " + handCenter.getX() + " Z : " + handCenter.getZ());
@@ -84,9 +60,11 @@ void draw() {
         } else {
           port.write(6); // Arrêt
         }
+      } else {
+        port.write(6);
       }
     } else {
-      println("Arrêt");
+      port.write(0);
       port.write(6);
     }
 
