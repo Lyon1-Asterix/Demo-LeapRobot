@@ -5,7 +5,7 @@
 #+TITLE: Your-Robot
 #+DATE: <2016-03-12 sam.>
 #+AUTHOR: Hédi Nasr
-#+EMAIL: hedi.nasr@etu.univ-lyon1.fr
+#+EMAIL: hedi.nasr@etu.univ-lyon1.fr ghayth.bouagila@esprit.tn
 #+LANGUAGE: fr
 #+SELECT_TAGS: export
 #+EXCLUDE_TAGS: noexport
@@ -24,7 +24,7 @@ Robot piloté par un Leap Motion et pilotable aussi à l'aide d'un module Blueto
 + 2 moteurs DC
 + 8 diodes LED
 + Circuit intégré L298 ou L293
-
+  
 * Circuit
 
 [[file:./resources/circuit.jpg]]
@@ -48,3 +48,7 @@ Robot piloté par un Leap Motion et pilotable aussi à l'aide d'un module Blueto
     #+BEGIN_SRC sh
     sudo chmod a+rw /dev/ttyACM0
     #+END_SRC
+* Tasks
+** TODO Communication Bluetooth entre Leap Motion et Arduino
+** TODO Interface Android ergonomique pour déplacement du robot
+** TODO Remplacement des moteur DC par des servo-moteurs NXT 

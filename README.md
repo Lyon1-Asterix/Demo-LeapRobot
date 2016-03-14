@@ -2,23 +2,30 @@
 <h2>Table des matières</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline1">1. Your-Robot</a></li>
-<li><a href="#orgheadline2">2. Prérequis</a></li>
-<li><a href="#orgheadline3">3. Circuit</a></li>
-<li><a href="#orgheadline4">4. How it works ?</a></li>
-<li><a href="#orgheadline5">5. Troubleshooting</a></li>
+<li><a href="#sec-1">1. Your-Robot</a></li>
+<li><a href="#sec-2">2. Prérequis</a></li>
+<li><a href="#sec-3">3. Circuit</a></li>
+<li><a href="#sec-4">4. How it works ?</a></li>
+<li><a href="#sec-5">5. Troubleshooting</a></li>
+<li><a href="#sec-6">6. Tasks</a>
+<ul>
+<li><a href="#sec-6-1">6.1. <span class="todo TODO">TODO</span> Communication Bluetooth entre Leap Motion et Arduino</a></li>
+<li><a href="#sec-6-2">6.2. <span class="todo TODO">TODO</span> Interface Android ergonomique pour déplacement du robot</a></li>
+<li><a href="#sec-6-3">6.3. <span class="todo TODO">TODO</span> Remplacement des moteur DC par des servo-moteurs NXT</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 
 ![img](./resources/fhack.jpg)
 
-# Your-Robot<a id="orgheadline1"></a>
+# Your-Robot<a id="sec-1" name="sec-1"></a>
 
 Robot piloté par un Leap Motion et pilotable aussi à l'aide d'un module Bluetooth
 à travers une application Android (Ardudroid) installée sur votre smartphone.
 
-# Prérequis<a id="orgheadline2"></a>
+# Prérequis<a id="sec-2" name="sec-2"></a>
 
 -   Arduino Uno
 -   Leap Motion
@@ -27,20 +34,20 @@ Robot piloté par un Leap Motion et pilotable aussi à l'aide d'un module Blueto
 -   8 diodes LED
 -   Circuit intégré L298 ou L293
 
-# Circuit<a id="orgheadline3"></a>
+# Circuit<a id="sec-3" name="sec-3"></a>
 
 ![img](./resources/circuit.jpg)
 
-# How it works ?<a id="orgheadline4"></a>
+# How it works ?<a id="sec-4" name="sec-4"></a>
 
 -   Télécharger et installer [Processing](https://processing.org/download/) et [Arduino IDE](https://www.arduino.cc/en/Main/Software).
 -   Ouvrer dans [Arduino IDE](https://www.arduino.cc/en/Main/Software) le code se trouvant dans le dossier Arduino.
     -   Connecter l'Arduino à votre ordinateur et téléverser le code.
 -   Ouvrer dans [Processing](https://processing.org/download/) le code se trouvant dans le dossier Processing.
-    -   Brancher le Leap Motion <sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>
+    -   Brancher le Leap Motion
     -   Exécuter le code.
 
-# Troubleshooting<a id="orgheadline5"></a>
+# Troubleshooting<a id="sec-5" name="sec-5"></a>
 
 -   Sous Linux, vous aurez peut-être un problème du type :
     
@@ -50,11 +57,21 @@ Robot piloté par un Leap Motion et pilotable aussi à l'aide d'un module Blueto
         
             sudo chmod a+rw /dev/ttyACM0
 
+# Tasks<a id="sec-6" name="sec-6"></a>
+
+## TODO Communication Bluetooth entre Leap Motion et Arduino<a id="sec-6-1" name="sec-6-1"></a>
+
+## TODO Interface Android ergonomique pour déplacement du robot<a id="sec-6-2" name="sec-6-2"></a>
+
+## TODO Remplacement des moteur DC par des servo-moteurs NXT<a id="sec-6-3" name="sec-6-3"></a>
+
 <div id="footnotes">
 <h2 class="footnotes">Notes de bas de page: </h2>
 <div id="text-footnotes">
 
-<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara">Sous Linux il faut lancer la commande `sudo leapd` pour faire fonctionner le Leap.</div></div>
+<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> Sous Linux il faut lancer la commande #+BEGIN<sub>SRC</sub> sh
+sudo leapd
+\\#+END<sub>SRC</sub> pour faire fonctionner le Leap Motion.</div>
 
 
 </div>
