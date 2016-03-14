@@ -48,7 +48,3 @@ Robot piloté par un Leap Motion et pilotable aussi à l'aide d'un module Blueto
     #+BEGIN_SRC sh
     sudo chmod a+rw /dev/ttyACM0
     #+END_SRC
-* Tasks
-** TODO Communication Bluetooth entre Leap Motion et Arduino
-** TODO Interface Android ergonomique pour déplacement du robot
-** TODO Remplacement des moteur DC par des servo-moteurs NXT 

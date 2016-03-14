@@ -7,13 +7,6 @@
 <li><a href="#sec-3">3. Circuit</a></li>
 <li><a href="#sec-4">4. How it works ?</a></li>
 <li><a href="#sec-5">5. Troubleshooting</a></li>
-<li><a href="#sec-6">6. Tasks</a>
-<ul>
-<li><a href="#sec-6-1">6.1. <span class="todo TODO">TODO</span> Communication Bluetooth entre Leap Motion et Arduino</a></li>
-<li><a href="#sec-6-2">6.2. <span class="todo TODO">TODO</span> Interface Android ergonomique pour déplacement du robot</a></li>
-<li><a href="#sec-6-3">6.3. <span class="todo TODO">TODO</span> Remplacement des moteur DC par des servo-moteurs NXT</a></li>
-</ul>
-</li>
 </ul>
 </div>
 </div>
@@ -56,14 +49,6 @@ Robot piloté par un Leap Motion et pilotable aussi à l'aide d'un module Blueto
     -   Pour régler ce problème, entrer cette commande: 
         
             sudo chmod a+rw /dev/ttyACM0
-
-# Tasks<a id="sec-6" name="sec-6"></a>
-
-## TODO Communication Bluetooth entre Leap Motion et Arduino<a id="sec-6-1" name="sec-6-1"></a>
-
-## TODO Interface Android ergonomique pour déplacement du robot<a id="sec-6-2" name="sec-6-2"></a>
-
-## TODO Remplacement des moteur DC par des servo-moteurs NXT<a id="sec-6-3" name="sec-6-3"></a>
 
 <div id="footnotes">
 <h2 class="footnotes">Notes de bas de page: </h2>
