@@ -5,7 +5,7 @@
 #+TITLE: Your-Robot
 #+DATE: <2016-03-12 sam.>
 #+AUTHOR: Hédi Nasr
-#+EMAIL: hedi.nasr@etu.univ-lyon1.fr
+#+EMAIL: hedi.nasr@etu.univ-lyon1.fr ghayth.bouagila@esprit.tn
 #+LANGUAGE: fr
 #+SELECT_TAGS: export
 #+EXCLUDE_TAGS: noexport
@@ -24,7 +24,7 @@ Robot piloté par un Leap Motion et pilotable aussi à l'aide d'un module Blueto
 + 2 moteurs DC
 + 8 diodes LED
 + Circuit intégré L298 ou L293
-
+  
 * Circuit
 
 [[file:./resources/circuit.jpg]]
@@ -37,7 +37,7 @@ Robot piloté par un Leap Motion et pilotable aussi à l'aide d'un module Blueto
   + Brancher le Leap Motion [fn:1]
   + Exécuter le code.
 
-[fn:1] Sous Linux il faut lancer la commande src_sh[:exports code]{sudo leapd} pour faire fonctionner le Leap Motion.
+[fn:1] Sous Linux il faut lancer la commande `sudo leapd` pour faire fonctionner le Leap Motion.
 
 * Troubleshooting
 + Sous Linux, vous aurez peut-être un problème du type :
