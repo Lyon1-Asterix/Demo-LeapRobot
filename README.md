@@ -54,9 +54,7 @@ Robot piloté par un Leap Motion et pilotable aussi à l'aide d'un module Blueto
 <h2 class="footnotes">Notes de bas de page: </h2>
 <div id="text-footnotes">
 
-<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> Sous Linux il faut lancer la commande #+BEGIN<sub>SRC</sub> sh
-sudo leapd
-\\#+END<sub>SRC</sub> pour faire fonctionner le Leap Motion.</div>
+<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> Sous Linux il faut lancer la commande \`sudo leapd\` pour faire fonctionner le Leap Motion.</div>
 
 
 </div>

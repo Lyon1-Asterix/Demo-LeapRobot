@@ -37,7 +37,7 @@ Robot piloté par un Leap Motion et pilotable aussi à l'aide d'un module Blueto
   + Brancher le Leap Motion [fn:1]
   + Exécuter le code.
 
-[fn:1] Sous Linux il faut lancer la commande src_sh[:exports code]{sudo leapd} pour faire fonctionner le Leap Motion.
+[fn:1] Sous Linux il faut lancer la commande `sudo leapd` pour faire fonctionner le Leap Motion.
 
 * Troubleshooting
 + Sous Linux, vous aurez peut-être un problème du type :
