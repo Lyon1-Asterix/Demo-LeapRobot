@@ -9,7 +9,7 @@ byte interesting = 10;
 
 void setup () {
   //size(200, 200);
-  myClient = new Client (this, "192.168.1.181", 2222);
+  myClient = new Client (this, "192.168.1.118", 2222);
   port = new Serial(this, Serial.list()[0], 115200);//initialize the port
 }
 
